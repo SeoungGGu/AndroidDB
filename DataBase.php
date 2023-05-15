@@ -38,13 +38,13 @@ class DataBase
     {
         $UserID = $this->prepareData($UserID);
         $lgPassWord = $this->prepareData($lgPassWord);
-        $this->sql = "select * from " . $table . " where UserID = '" . $UserID . "'";
+        $this->sql = "select * from " . $table . " where USER_ID = '" . $UserID . "'";
         $result = mysqli_query($this->connect, $this->sql);
         $row = mysqli_fetch_assoc($result);
         if (mysqli_num_rows($result) != 0) {
-            $dbusername = $row['UserID'];
-            $dbpassword = $row['PassWord'];
-            if ($dbusername == $UserID && password_verify($lgPassWord, $dbpassword)) {
+            $dbuserId = $row['USER_ID'];
+            $dbpassword = $row['PW'];
+            if ($dbuserId == $UserID && password_verify($lgPassWord, $dbpassword)) {
                 $login = true;
             } else $login = false;
         } else $login = false;
@@ -59,7 +59,7 @@ class DataBase
         $UserName = $this->prepareData($UserName);
         $PassWord = password_hash($PassWord, PASSWORD_DEFAULT);
         $this->sql =
-            "INSERT INTO " . $table . " (UserID, UserEmail, UserName, PassWord) VALUES ('" . $UserID . "','" . $UserEmail . "','" . $UserName . "','" . $PassWord . "')";
+            "INSERT INTO " . $table . " (USER_ID, PW, NAME, Mail) VALUES ('" . $UserID . "','" . $PassWord . "','" . $UserName . "','" . $UserEmail . "')";
         if (mysqli_query($this->connect, $this->sql)) {
             return true;
         } else return false;
