@@ -1,0 +1,68 @@
+파이어베이스 홈페이지들어가서 가입
+
+프로젝트 만드는 버튼클릭 (화면에 뜸)
+-> 프로젝트이름 : cookrecipe
+
+본인 프로젝트 누르고 들어와서 가운대에(안드로이드 아이콘 클릭)
+-> 안내해주는 순서에따라 진행
+-> Firebase SDK추가에서 classpath 'com.google------'  <- [초록글씨] 본인안드로이 build.gradle에 추가
+
+안드로이드앱키기
+-> tool -> firebase -> Realtime Database -> 첫번째[Get started with Realtime Database]
+(1) Connect your app to Firebase 연결하기
+
+다시 파이어베이스 홈페이지 왼쪽에 Realtime Database클릭
+
+데이터베이스 만들기 클릭
+-> 잠금모드와 테스트모드중 테스트모드 선택
+
+선택 완료 후 우측에 3개의 점으로 된 모양 클릭
+-> 클릭 이후 JSON 가져오기
+-> 가져온 JSON은 안드로이드앱에 들어오면 좌측상단에 Android를 Project로 변경 후
+-> app파일에 넣기
+
+홈페이지 RealDatabase안에  데이터 클릭    (아래 그림처럼 나와야함 대소문자 구분잘하기)
+https://oooooooooooooooooo.firebase.com
+User
+       User01
+	  img "값"
+	  title1 "돌"
+	  title2 "돌2"
+	  title3 "돌3"
+
+알람과 같이 띄울 사진 아무거나 컴퓨터에 저장
+
+왼쪽에 빌드 누르면 storage누르기 (테스트모드로 진행할거임)
+-> 시작하기
+-> 위치상관(아무거나)
+-> 완료버튼
+
+파일업로드 버튼클릭
+-> 아까 저장한 이미지 받아오기
+
+storage페이지에 rule클릭
+-> 19번줄바꾸기
+   -> allow read, write:if true;
+-> 게시
+
+다시 사진불러온 곳으로 이동
+-> 본인이 올린 png클릭
+-> 오른쪽보면 자신이 올린 아이콘과 이름,크기,유형,날짜 업데이트날짜가 보임
+-> 아래보면 파일위치 [저장소위치, 엑세스토큰이있음]
+-> 토큰누르면 자동 복사
+
+RealDataBase안에 데이터에 아까 작성한 img 값부분에 토큰복사한거 넣기
+
+RealDataBase안에 규칙클릭
+-> read가 false로 되어있을건데
+
+  "rules": {
+    ".read": true,
+    ".write": false
+
+-> read를 true로 변경
+
+안드로이드 앱에 아까와 같이
+tools -> firebase -> realtime database -> [Get started with Realtime Database]
+(2) Add the Realtime Database to you app
+- Add the Realtime Database SDK to your app 클릭 후 연결
